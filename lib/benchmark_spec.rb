@@ -34,7 +34,7 @@ class BenchmarkSpec
     @formatter = opts[:formatter] || OutputFormatter.new
 
     @config ||= {}
-    instance_exec @config, &config_proc
+    instance_exec @config, &config_proc if config_proc
   end
 
   class << self
@@ -117,8 +117,10 @@ class BenchmarkSpec
         formatter.print "running #{t[:description]} ..."
 
         before_each_hooks.each {|b| b.call}
-        reports << Benchmark.measure(t[:description]) { t[:execution].call }
+        report = Benchmark.measure(t[:description], &t[:execution])
         after_each_hooks.each {|a| a.call}
+
+        reports << report
       rescue => e
         formatter.print "Error: #{e.message}".colorize(:red)
       end
