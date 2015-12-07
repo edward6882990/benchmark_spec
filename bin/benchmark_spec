@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'benchmark_spec'
-BenchmarkSpec.run
+BenchmarkSpec.run ARGV
