@@ -4,25 +4,35 @@
 ## Getting Start
 To install, you can run:
 
-`gem install benchmark-spec`
+```
+gem install benchmark-spec
+```
 
 Or, you can bundle by adding the gem to your Gemfile:
 
-`gem 'benchmark-spec'`
+```
+gem 'benchmark-spec'
+```
 
 ## Running benchmarks
 To run benchmarks, you can run:
 
-`bundle exec benchmark_spec path/to/dir path/to/file [...]`
+```
+bundle exec benchmark_spec path/to/dir path/to/file [...]
+```
 
 Or by default, if there is no argument provided, `benchmark_spec` will run benchmarks from `{YOUR_PROJECT_ROOT}/benchmark` folder
 
-`bundle exec benchmark-spec`
+```
+bundle exec benchmark-spec
+```
 
 ## Writing a benchmark
 `benchmark_spec` will only load files that end with `*_benchmark.rb`, therefore be careful when naming your benchmark files:
 
-`touch benchmark/test_benchmark.rb`
+```
+touch benchmark/test_benchmark.rb
+```
 
 Then in at the top of your code, `require 'benchmark_spec` and write your RSpec like benchmark:
 
@@ -66,8 +76,10 @@ You can pass in a block to configure `benchmark_spec`:
 
 If you want to use [Rack::Test](https://github.com/brynary/rack-test) with `benchmark_spec`, you will need to do something like:
 ```ruby
-  def app
-    MyApp
+  BenchmarkSpec.configure do |config|
+    def app
+      MyApp
+    end
   end
 ```
 
