@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name    = 'benchmark-spec'
-  s.version = '0.1.2'
+  s.version = '0.1.3'
   s.summary = 'RSpec syntax mimicked benchmarking framework'
   s.authors = ['Edward Tam']
   s.email   = 'etam@adparlor.com'
